@@ -74,10 +74,12 @@ const Form = ({ deal }: { deal: FlattenedFlightDeal }) => {
       // If the card is below the window's bottom and form is in view
       if (formRect.top < 0 && cardRect.top < windowHeight) {
         card.classList.add("lg:sticky");
+        card.classList.add("lg:top-8");
         form.classList.add("lg:sticky");
       } else {
         card.classList.remove("lg:sticky");
         form.classList.remove("lg:sticky");
+        card.classList.remove("lg:top-8");
       }
     };
 
@@ -93,7 +95,7 @@ const Form = ({ deal }: { deal: FlattenedFlightDeal }) => {
     <form
       ref={formRef}
       onSubmit={handleSubmit(onSubmit)}
-      className="lg:w-[80%] w-[90%] mx-auto flex flex-col-reverse lg:flex-row py-6 gap-20 justify-center"
+      className="lg:w-[80%] w-[90%] mx-auto flex flex-col-reverse lg:flex-row py-6 gap-20 justify-center lg:items-start"
     >
       {/* Passenger Info Section */}
       <div className="flex-1 gap-6 flex flex-col">
@@ -332,10 +334,7 @@ const Form = ({ deal }: { deal: FlattenedFlightDeal }) => {
       </div>
 
       {/* Flight Card Detail */}
-      <div
-        ref={cardRef}
-        className="flex flex-col top-0 gap-y-3 z-30 items-center "
-      >
+      <div ref={cardRef} className="flex flex-col  gap-y-3 z-30 items-center ">
         <FlightCard toPage={false} flightDetails={deal} />
         <div className="flex flex-col text-center items-center gap-y-2 border border-gray-300 rounded-xl p-3">
           <p className="font-semibold text-lg text-[#1D2939]">
